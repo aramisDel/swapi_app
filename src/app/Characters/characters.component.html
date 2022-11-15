@@ -1,0 +1,28 @@
+<div class="card">
+    <div class="card-header">
+    {{title}}    
+    </div>
+    <div class="card-body">
+    <ul>
+        <li  *ngFor="let character of characters?.results">
+            <div class="row">
+        <div class="card-container">
+           
+            <a [routerLink]="['/characters', ((character.url).slice(-2)).slice(0,-1)]" id="names_card" class="card" target="_blank" rel="noopener" >
+              <br>
+                
+                <ul>
+                  <p> {{character.name}}</p>
+            
+        </ul>
+            </a>
+                
+        </div>
+    </div>
+        
+    </li>
+
+
+</ul>
+    </div>
+ 
