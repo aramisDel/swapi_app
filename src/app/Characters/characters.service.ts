@@ -9,7 +9,7 @@ import { catchError, Observable, tap, throwError } from 'rxjs';
 })
 export class CharactersService {
   
-  private url = 'https://swapi.dev/api/people/';
+  private url = 'https://swapi.py4e.com/api/people/';
   
   constructor(private http: HttpClient){
 

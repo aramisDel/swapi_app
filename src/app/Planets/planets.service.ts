@@ -7,7 +7,7 @@ import { Planet } from './planet';
   providedIn: 'root'
 })
 export class PlanetsService {
-  private planetsURL = 'https://swapi.dev/api/planets'
+  private planetsURL = 'https://swapi.py4e.com/api/planets'
 
   constructor(private http: HttpClient) { }
 
