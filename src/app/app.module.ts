@@ -10,6 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { CharacterDetailsComponent } from './Characters/character-details.component';
 import { CharactersModule } from './Characters/characters.module';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { CharactersModule } from './Characters/characters.module';
     CharacterDetailsComponent
   ],
   imports: [
+    FormsModule, 
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
