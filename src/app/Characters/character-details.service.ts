@@ -14,9 +14,9 @@ export class CharacterDetailsService {
 
   }
 
-  getCharacterDetails(id: string): Observable<Character[]> {
-    return this.http.get<Character[]>(this.url+id+'/').pipe(
-      tap(data => console.log('All', JSON.stringify(data))),
+  getCharacterDetails(id: string): Observable<Character> {
+    return this.http.get<Character>(this.url+id+'/').pipe(
+      tap(data => console.log('All', data)),
       catchError(this.handleError)
     );
 }

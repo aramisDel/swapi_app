@@ -1,7 +1,7 @@
 <div class="card">
     <div class='card-header'>
 
-        {{pageTitle + ': ' + character}}
+        {{pageTitle + ': ' + character.name}}
     </div>
 
     <div class='card-body'
@@ -10,7 +10,9 @@
     <div class='col-md-8'>
      <div class='row'>
        <div class='col-md-4'>Name:</div>
-       <div class='col-md-8'>{{character}}</div>
+       <div class='col-md-8'>{{character.name }}</div>
+       <div class='col-md-4'>BirthDay:</div>
+       <div class='col-md-8'>{{character.birth_year }}</div>
      </div>
 
     </div>
