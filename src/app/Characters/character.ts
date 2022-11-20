@@ -4,7 +4,6 @@ export interface Character {
     name: string;
     gender: string;
     birth_year: string;
-    films: Film[];
-    filmIds: number[];
+    films: string[];
     url: string;
   }

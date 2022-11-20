@@ -12,8 +12,8 @@ export class CharactersComponent implements OnInit {
 substr(arg0: number): any|string {
 throw new Error('Method not implemented.');
 }
-  characters : any;
-
+  characters : Character[] = [];
+  urlId : number = 0;
 
   title : string = 'Characters';
   errorMesage: string = '';
@@ -22,12 +22,10 @@ throw new Error('Method not implemented.');
   constructor(private charactersService : CharactersService) { }
 
   ngOnInit(): void {
-     this.charactersService.getCharacters().subscribe(
-       characters => this.characters = characters
-      
+     this.charactersService.results$.subscribe(
+       characters => this.characters = characters.results
     );
 
-       
     
   }
 
