@@ -18,19 +18,20 @@ export class CharactersService {
 
   }
 
-  getPage(pageNumber: number): string{
-    return this.url+'?page='+pageNumber;
-  }
-
 
   results$ = this.http.get<Results>(this.url)
   .pipe(
     tap(data => console.log('Results : ', JSON.stringify(data))),
-    catchError(this.handleError)
+    catchError(this.handleError),
+    
   );
 
 
+   getUrlId(characterUrl: string): number{
+    return parseInt(characterUrl.substring((this.url).length, characterUrl.length-1),10)
   
+  }
+
   private handleError(err: HttpErrorResponse){
     let errorMessage = '';
     

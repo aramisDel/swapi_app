@@ -36,9 +36,9 @@ export class PlanetsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.planetsService.getPlanets().subscribe({
+    this.planetsService.results$.subscribe({
       next: planets => {
-        this.planets = planets;
+        this.planets = planets.results;
         this.filteredPlanets = this.planets;
       },
       error: err => this.errorMesage = err

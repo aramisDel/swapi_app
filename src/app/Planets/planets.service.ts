@@ -1,7 +1,8 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, Observable, tap, throwError } from 'rxjs';
+import { catchError, combineLatest, EMPTY, expand, map, merge, Observable, of, reduce, take, tap, throwError } from 'rxjs';
 import { Planet } from './planet';
+import { Results } from './results';
 
 @Injectable({
   providedIn: 'root'
@@ -11,12 +12,21 @@ export class PlanetsService {
 
   constructor(private http: HttpClient) { }
 
+  results$ = this.http.get<Results>(this.planetsURL)
+  .pipe(
+    tap(data => console.log('planet Results : ', JSON.stringify(data))),
+    catchError(this.handleError)
+  );
+
   getPlanets(): Observable<Planet[]> {
     return this.http.get<Planet[]>(this.planetsURL).pipe(
         tap(data => console.log('All', JSON.stringify(data))),
         catchError(this.handleError)
     );
 }
+
+
+
 
 private handleError(err: HttpErrorResponse){
   let errorMessage = '';

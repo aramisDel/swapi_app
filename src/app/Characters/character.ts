@@ -6,4 +6,5 @@ export interface Character {
     birth_year: string;
     films: string[];
     url: string;
+    id: number;
   }

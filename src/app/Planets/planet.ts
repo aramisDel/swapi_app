@@ -3,6 +3,8 @@ export interface Planet {
     climate: string;
     gravity: string;
     population: string;
+    id: number;
+    url: string;
 
   
   }

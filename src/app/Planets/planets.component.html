@@ -28,16 +28,11 @@
               </thead>
               <tbody>
                 <tr *ngFor="let planet of filteredPlanets">
-                    <!-- <td><img  *ngIf="showImage" 
-                        [src]="planet.imageUrl" [title]="planet.name" 
-                        [style.width.px]="imageWidth" 
-                        [style.margin.px]="imageMargin">
-                      </td> -->
                       
-                    <!-- <td>{{planets.name}}</td>
-                    <td>{{planets.climate}}</td>
-                    <td>{{planets.gravity}}</td>
-                    <td>{{planets.population }}</td> -->
+                    <td>{{planet.name}}</td>
+                    <td>{{planet.climate}}</td>
+                    <td>{{planet.gravity}}</td>
+                    <td>{{planet.population }}</td>
 
                 </tr>
               </tbody>
