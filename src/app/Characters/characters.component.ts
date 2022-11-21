@@ -13,8 +13,8 @@ substr(arg0: number): any|string {
 throw new Error('Method not implemented.');
 }
   characters : Character[] = [];
-  urlId : number = 0;
-
+  urlId : string = '';
+  pagesCount : number = 0;
   title : string = 'Characters';
   errorMesage: string = '';
 
@@ -23,7 +23,9 @@ throw new Error('Method not implemented.');
 
   ngOnInit(): void {
      this.charactersService.results$.subscribe(
-       characters => this.characters = characters.results
+       characters => {
+        this.characters = characters.results
+       }
     );
 
     

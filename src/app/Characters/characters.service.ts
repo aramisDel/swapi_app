@@ -18,6 +18,11 @@ export class CharactersService {
 
   }
 
+  getPage(pageNumber: number): string{
+    return this.url+'?page='+pageNumber;
+  }
+
+
   results$ = this.http.get<Results>(this.url)
   .pipe(
     tap(data => console.log('Results : ', JSON.stringify(data))),

@@ -1,3 +1,6 @@
 export interface Film{
-    name: string;
+    title: string;
+    url: string;
+    release_date: string;
+    id: number;
 }

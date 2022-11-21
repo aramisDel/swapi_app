@@ -26,8 +26,13 @@ export class CharacterDetailsComponent implements OnInit {
     const id = (this.route.snapshot.paramMap.get('id'));
 
      this.characterDetailsService.getCharacterDetails(`${id}`).subscribe({
-      next: character => 
-        this.character = character
+      next: character => {
+        this.character = character,
+        this.characterDetailsService.getFilms(character).subscribe(
+          data => {this.films = data,
+          console.log(this.films)}
+        );
+      }
       ,
       error: err => this.errorMesage = err
     }

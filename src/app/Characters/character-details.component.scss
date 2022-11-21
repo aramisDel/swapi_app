@@ -1,0 +1,17 @@
+.icon-list, .icon-list ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+  
+  .icon-list ul {
+    margin: 1em;
+    margin-left: 3em;
+  }
+  .icon-list ul:before {
+    content: '\f006'; /* fa-star */
+    font-family: 'FontAwesome';
+    float: left;
+    margin-left: -1.5em;
+    color: #0074D9;
+  }
