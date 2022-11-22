@@ -11,6 +11,7 @@ import { RouterModule } from '@angular/router';
 import { CharacterDetailsComponent } from './Characters/character-details.component';
 import { CharactersModule } from './Characters/characters.module';
 import { FormsModule } from '@angular/forms';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -18,9 +19,11 @@ import { FormsModule } from '@angular/forms';
     WelcomeComponent,
     CharactersComponent,
     PlanetsComponent,
-    CharacterDetailsComponent
+    CharacterDetailsComponent,
+
   ],
   imports: [
+    NgxPaginationModule,
     FormsModule, 
     BrowserModule,
     AppRoutingModule,

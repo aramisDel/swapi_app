@@ -12,12 +12,16 @@ import { PlanetsService } from './planets.service';
 export class PlanetsComponent implements OnInit {
   pageTitle: string = 'Planets';
   errorMesage: string = '';
+  p: number = 1;
+  total: number = 0;
 
   private _listFilter: string = '';
 
   get listFilter(): string{
     return this._listFilter;
     }
+
+    
 
     set listFilter(value: string){
       this._listFilter = value;
@@ -35,15 +39,23 @@ export class PlanetsComponent implements OnInit {
         planet.name.toLocaleLowerCase().includes(filterBy))
   }
 
-  ngOnInit(): void {
-    this.planetsService.results$.subscribe({
-      next: planets => {
-        this.planets = planets.results;
-        this.filteredPlanets = this.planets;
-      },
-      error: err => this.errorMesage = err
-    });
+  pageChangeEvent(event: number){
+    this.p = event;
+    this.getPlanets();
+}
 
+getPlanets(){
+  this.planetsService.getPlanets(this.p).subscribe({
+    next: planets => {
+      this.planets = planets.results;
+      this.filteredPlanets = this.planets;
+      this.total = planets.count;
+    },
+    error: err => this.errorMesage = err
+  });
+}
+  ngOnInit(): void {
+   this.getPlanets();
   }
 
 }

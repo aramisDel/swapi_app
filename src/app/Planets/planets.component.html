@@ -27,7 +27,7 @@
                 </tr>
               </thead>
               <tbody>
-                <tr *ngFor="let planet of filteredPlanets">
+                <tr *ngFor="let planet of filteredPlanets | paginate: { itemsPerPage: 10, currentPage: p, totalItems: total }">
                       
                     <td>{{planet.name}}</td>
                     <td>{{planet.climate}}</td>
@@ -37,6 +37,7 @@
                 </tr>
               </tbody>
             </table>
+            <pagination-controls (pageChange)="pageChangeEvent($event)"></pagination-controls>
           </div>
 
     </div>

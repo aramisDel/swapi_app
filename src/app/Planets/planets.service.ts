@@ -18,8 +18,9 @@ export class PlanetsService {
     catchError(this.handleError)
   );
 
-  getPlanets(): Observable<Planet[]> {
-    return this.http.get<Planet[]>(this.planetsURL).pipe(
+  
+  getPlanets(page: number): Observable<Results> {
+    return this.http.get<Results>(this.planetsURL+ '?page=' + page).pipe(
         tap(data => console.log('All', JSON.stringify(data))),
         catchError(this.handleError)
     );
