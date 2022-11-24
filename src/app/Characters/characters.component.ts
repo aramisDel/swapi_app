@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { reduce, Subscription } from 'rxjs';
 import { Character } from './character';
 import { CharactersService } from './characters.service';
 import { Results } from './results';
@@ -13,26 +13,34 @@ substr(arg0: number): any|string {
 throw new Error('Method not implemented.');
 }
   characters : Character[] = [];
-  urlId : number = 0;
+  results  : Results[] = [];
   pagesCount : number = 0;
   title : string = 'Characters';
   errorMesage: string = '';
+  p: number = 1;
+  total: number = 0;
 
 
-  constructor(private charactersService : CharactersService) { }
+  constructor(public charactersService : CharactersService) { }
 
-  ngOnInit(): void {
-     this.charactersService.results$.subscribe(
-       characters => {
-        this.characters = characters.results,
-        characters.results.map(
-          character => this.urlId = this.charactersService.getUrlId(character.url)
-
-        )
-       }
-    );
-
-    
-  }
-
+  pageChangeEvent(event: number){
+    this.p = event;
+    this.charactersService.getAllPages();
 }
+  ngOnInit(): void {
+     this.charactersService.getAllPages().subscribe(
+       
+      character => {  
+        this.characters = character,
+        console.log('Actual Result pages: ', JSON.stringify(character))
+        }
+
+        )}
+     
+        
+       }
+    
+
+  
+
+

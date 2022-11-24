@@ -4,11 +4,11 @@
   </div>
   <div class="card-body">
     <ul>
-      <li *ngFor="let character of characters ">
+      <li *ngFor="let character of characters| paginate: { itemsPerPage: 10, currentPage: p, totalItems: total }">
         <div class="row">
           <div class="card-container">
 
-            <a [routerLink]="['/characters', urlId]" class="card" id="names_card" rel="noopener" target="_blank">
+            <a [routerLink]="['/characters', this.charactersService.getUrlId(character.url)]" class="card" id="names_card" rel="noopener" target="_blank">
               <br>
               <ul>
                 <p> {{character.name}}</p>
@@ -20,7 +20,7 @@
         </div>
 
       </li>
-
+      <pagination-controls (pageChange)="pageChangeEvent($event)"></pagination-controls>
 
     </ul>
   </div>
