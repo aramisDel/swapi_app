@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { reduce, Subscription } from 'rxjs';
 import { Character } from './character';
 import { CharactersService } from './characters.service';
-import { Results } from './results';
 
 @Component({
   templateUrl: './characters.component.html',

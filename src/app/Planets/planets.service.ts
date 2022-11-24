@@ -1,6 +1,6 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, combineLatest, EMPTY, expand, map, merge, Observable, of, reduce, take, tap, throwError } from 'rxjs';
+import { catchError, EMPTY, expand, Observable, reduce, tap, throwError } from 'rxjs';
 import { Planet } from './planet';
 import { Results } from './results';
 
@@ -13,7 +13,6 @@ export class PlanetsService {
   constructor(private http: HttpClient) { }
 
 public getAllPlanets(): Observable<Planet[]> {
-    
   return  this.http.get<Results>(this.planetsURL).pipe(
     expand(response => response.next ? this.http.get<Results>(response.next) : EMPTY),
     reduce((accData, data) => accData.concat(data.results), [] as Planet[]),

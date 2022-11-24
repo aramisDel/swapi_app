@@ -20,7 +20,6 @@ export class PlanetsComponent implements OnInit {
   get listFilter(): string{
     return this._listFilter;
     }
-
     
 
     set listFilter(value: string){

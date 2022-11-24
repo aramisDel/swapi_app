@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { Character } from './character';
-import { catchError, concatMap, delay, EMPTY, expand, from, map, mergeMap, Observable, reduce, switchMap, tap, throwError } from 'rxjs';
+import { catchError, EMPTY, expand, Observable, reduce, switchMap, tap, throwError } from 'rxjs';
 import { Film } from '../film';
 import { Results } from './results';
 
