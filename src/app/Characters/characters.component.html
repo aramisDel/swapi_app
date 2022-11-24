@@ -8,7 +8,7 @@
         <div class="row">
           <div class="card-container">
 
-            <a [routerLink]="['/characters', this.charactersService.getUrlId(character.url)]" class="card" id="names_card" rel="noopener" target="_blank">
+            <a [routerLink]="['/characters', this.charactersService.getUrlId(character.url)]" class="card" id="names_card" oncontextmenu="return false;">
               <br>
               <ul>
                 <p> {{character.name}}</p>
