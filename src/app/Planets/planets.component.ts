@@ -45,11 +45,11 @@ export class PlanetsComponent implements OnInit {
 }
 
 getPlanets(){
-  this.planetsService.getPlanets(this.p).subscribe({
+  this.planetsService.getAllPlanets().subscribe({
     next: planets => {
-      this.planets = planets.results;
+      this.planets = planets;
       this.filteredPlanets = this.planets;
-      this.total = planets.count;
+
     },
     error: err => this.errorMesage = err
   });

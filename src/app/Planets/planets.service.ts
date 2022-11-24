@@ -12,21 +12,14 @@ export class PlanetsService {
 
   constructor(private http: HttpClient) { }
 
-  results$ = this.http.get<Results>(this.planetsURL)
-  .pipe(
-    tap(data => console.log('planet Results : ', JSON.stringify(data))),
-    catchError(this.handleError)
-  );
-
-  
-  getPlanets(page: number): Observable<Results> {
-    return this.http.get<Results>(this.planetsURL+ '?page=' + page).pipe(
-        tap(data => console.log('All', JSON.stringify(data))),
-        catchError(this.handleError)
-    );
+public getAllPlanets(): Observable<Planet[]> {
+    
+  return  this.http.get<Results>(this.planetsURL).pipe(
+    expand(response => response.next ? this.http.get<Results>(response.next) : EMPTY),
+    reduce((accData, data) => accData.concat(data.results), [] as Planet[]),
+    tap(data => console.log('All planets:: ', JSON.stringify(data))),
+    catchError(this.handleError))
 }
-
-
 
 
 private handleError(err: HttpErrorResponse){

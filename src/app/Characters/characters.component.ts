@@ -13,7 +13,6 @@ substr(arg0: number): any|string {
 throw new Error('Method not implemented.');
 }
   characters : Character[] = [];
-  results  : Results[] = [];
   pagesCount : number = 0;
   title : string = 'Characters';
   errorMesage: string = '';
@@ -25,18 +24,15 @@ throw new Error('Method not implemented.');
 
   pageChangeEvent(event: number){
     this.p = event;
-    this.charactersService.getAllPages();
+    this.charactersService.getAllCharacters();
 }
   ngOnInit(): void {
-     this.charactersService.getAllPages().subscribe(
+     this.charactersService.getAllCharacters().subscribe(
        
       character => {  
-        this.characters = character,
-        console.log('Actual Result pages: ', JSON.stringify(character))
+        this.characters = character
         }
-
         )}
-     
         
        }
     
