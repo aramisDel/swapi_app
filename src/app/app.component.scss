@@ -237,6 +237,11 @@
     z-index: -10;
     width: 1920px;
   }
+  .loader-container{
+    position: fixed;
+    width: 100%;
+    z-index: 99;
+}
 
   /* Responsive Styles */
   @media screen and (max-width: 767px) {

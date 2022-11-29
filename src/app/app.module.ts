@@ -6,12 +6,14 @@ import { AppComponent } from './app.component';
 import { WelcomeComponent } from './Home/welcome/welcome.component';
 import { CharactersComponent } from './Characters/characters.component';
 import { PlanetsComponent } from './Planets/planets.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { CharacterDetailsComponent } from './Characters/character-details.component';
 import { CharactersModule } from './Characters/characters.module';
 import { FormsModule } from '@angular/forms';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { CustomHttpInterceptor } from './Spinner/http-interceptor';
+import { SpinnerComponent } from './Spinner/spinner.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +22,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
     CharactersComponent,
     PlanetsComponent,
     CharacterDetailsComponent,
+    SpinnerComponent
 
   ],
   imports: [
@@ -36,7 +39,11 @@ import { NgxPaginationModule } from 'ngx-pagination';
     ]),
     CharactersModule
   ],
-  providers: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: CustomHttpInterceptor,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

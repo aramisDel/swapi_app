@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SpinnerService } from '../Spinner/spinner.service';
 import { Character } from './character';
 import { CharactersService } from './characters.service';
 
@@ -18,21 +19,29 @@ throw new Error('Method not implemented.');
   total: number = 0;
 
 
-  constructor(public charactersService : CharactersService) { }
+  constructor(public spinnerService : SpinnerService,public charactersService : CharactersService) { }
 
   pageChangeEvent(event: number){
     this.p = event;
-    this.charactersService.getAllCharacters();
+    this.getCharacters();
 }
+
+getCharacters(){
+  this.charactersService.getCharactersPage(this.p).subscribe({
+    next: characters => {
+      this.characters = characters.results;
+      this.total = characters.count;
+    },
+    error: err => this.errorMesage = err
+  });
+}
+
   ngOnInit(): void {
-     this.charactersService.getAllCharacters().subscribe(
-       
-      character => {  
-        this.characters = character
-        }
-        )}
+    this.getCharacters();
         
        }
+
+      }
     
 
   

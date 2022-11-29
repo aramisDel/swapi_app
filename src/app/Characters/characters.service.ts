@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from "@angular/common/http";
-import { Character } from './character';
-import { catchError, EMPTY, expand, Observable, reduce, switchMap, tap, throwError } from 'rxjs';
-import { Film } from '../film';
+import { catchError, Observable,tap, throwError } from 'rxjs';
 import { Results } from './results';
 
 
@@ -15,14 +13,10 @@ export class CharactersService {
   
   constructor(private http: HttpClient){  }
 
-  public getAllCharacters(): Observable<Character[]> {
-    
-    return  this.http.get<Results>(this.url).pipe(
-      expand(response => response.next ? this.http.get<Results>(response.next) : EMPTY),
-      
-      reduce((accData, data) => accData.concat(data.results), [] as Character[]),
-      tap(data => console.log('Result pages: ', JSON.stringify(data))),
-      catchError(this.handleError))
+  public getCharactersPage(page: number): Observable<Results> {
+    return  this.http.get<Results>(this.url+'?page='+page).pipe(
+      tap(data => console.log('Character page: ', JSON.stringify(data))),
+      catchError(this.handleError));
   }
 
    getUrlId(characterUrl: string): number{

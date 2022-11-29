@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { SpinnerService } from './Spinner/spinner.service';
 
 @Component({
   selector: 'app-root',
@@ -11,9 +12,13 @@ import { Component } from '@angular/core';
 </nav>
 <div class='container'>
 <router-outlet></router-outlet>
-</div>`
+<app-spinner></app-spinner>
+</div>
+`
   
 })
 export class AppComponent {
   title = 'Star Wars API';
+
+
 }

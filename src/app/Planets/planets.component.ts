@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SpinnerService } from '../Spinner/spinner.service';
 import { Planet } from './planet';
 import { PlanetsService } from './planets.service';
 
@@ -30,7 +31,7 @@ export class PlanetsComponent implements OnInit {
   filteredPlanets: Planet[] = [];
   planets: Planet[] = [];
 
-  constructor(private planetsService: PlanetsService) { }
+  constructor(public spinnerService : SpinnerService,private planetsService: PlanetsService) { }
 
   performFilter(filterBy : string): Planet[] {
     filterBy = filterBy.toLocaleLowerCase();     

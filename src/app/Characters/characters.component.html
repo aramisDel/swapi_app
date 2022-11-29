@@ -1,15 +1,24 @@
 <div class="card">
+  <div *ngIf="spinnerService.isLoading | async" class="text-center" id="loader-container">
+    <div  class="spinner-border text-primary" style="width: 8rem; height: 8rem; " role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+    </div>
   <div class="card-header">
     {{title}}
   </div>
+  
   <div class="card-body">
+    
     <ul>
+
       <li *ngFor="let character of characters| paginate: { itemsPerPage: 10, currentPage: p, totalItems: total }">
         <div class="row">
           <div class="card-container">
 
             <a [routerLink]="['/characters', this.charactersService.getUrlId(character.url)]" class="card" id="names_card" oncontextmenu="return false;">
               <br>
+              
               <ul>
                 <p> {{character.name}}</p>
 
